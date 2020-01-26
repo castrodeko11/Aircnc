@@ -16,7 +16,8 @@ export default function New({history}){
     },[thumbnail])
 
     async function handleSubmit(event){
-        event.preventDeault();
+        event.preventDefault();
+       
         const data = new FormData();
         const user_id = localStorage.getItem('user');
 
@@ -24,8 +25,8 @@ export default function New({history}){
         data.append('company', company);
         data.append('techs', techs);
         data.append('price', price);
-
-        await api.post('/spot',data,{
+        console.log(data);
+        await api.post('/spots',data,{
             headers: { user_id }
         })
 
